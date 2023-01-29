@@ -1,0 +1,25 @@
+{
+  "name": "teamprofilegenerator",
+  "version": "1.0.0",
+  "description": "A command line application to generate HTML team profile page.",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ateki/TeamProfileGenerator.git"
+  },
+  "author": "Irene Atek",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ateki/TeamProfileGenerator/issues"
+  },
+  "homepage": "https://github.com/ateki/TeamProfileGenerator#readme",
+  "devDependencies": {
+    "jest": "^29.4.1"
+  }
+}

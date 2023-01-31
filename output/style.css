@@ -1,0 +1,73 @@
+/**** VARIABLES ****/
+:root{
+    --body-background: white;
+
+    --header-font: white;
+    --header-light: rgb(31, 67, 231);
+    --header-dark: rgb(9, 29, 120);
+
+    --primary-light: rgba(255, 0, 0, 0.652); 
+    --primary-dark: rgb(200, 19, 19);
+
+    --font-dark:black;
+    --font-light:  rgb(244, 240, 240);
+}
+
+/**** RESETS ****/
+
+/* box sizeing to remove  */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;  /* includes padding and border in element's total width and height */
+}
+
+
+body {
+    font-family: sans-serif;  
+    background-color: var(--body-background) !important;
+}
+
+
+/* GLOBAL CLASSES */
+
+.team-area {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+        justify-content: center;
+      
+}
+
+.team-heading {
+    background-image: linear-gradient(to right,var(--header-dark), var(--header-light));
+    color: var(--header-font);
+}
+
+
+.employee-card {  
+    border-radius: 10px; 
+    padding: 10px;
+    margin: 10px;
+    background-image: linear-gradient(to right,var(--primary-dark), var(--primary-light));
+}
+
+h2.card-title {
+    color: var(--font-dark) !important;
+}
+
+h3.card-title {
+    color: var(--font-light) !important;
+}
+
+
+.card-body {
+    border-radius: 10px; 
+    background-color: var(--font-light)  !important;
+ }
+
+.card-body  a {
+    color: blue !important;
+}
+

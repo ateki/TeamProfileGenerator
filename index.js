@@ -36,10 +36,6 @@ const QUESTIONS_FOR_MANAGER_INFO = [
         type: 'input',
         validate(answer) {   
             return validateName(answer, 'Manager');
-           /*  if (!answer || answer.trim().length === 0) {
-                return `Please provide the name of the Manager.`;
-            }
-            return true; */
         }
     },
     {
@@ -48,11 +44,6 @@ const QUESTIONS_FOR_MANAGER_INFO = [
         type: 'input',
         validate(answer) {
             return validateId(answer, 'Manager');
-            /* if (!answer || isNaN(answer) || answer <0) {
-                // Expecting numerical id:  no whitespace or non numerical chars allowed.
-                return `Please provide a numerical id of the Manager (expecting a numerical id with no spaces) ).`;
-            }
-            return true; */
         }
     },
     {
@@ -60,17 +51,7 @@ const QUESTIONS_FOR_MANAGER_INFO = [
         message: `What is the team manager's email?`,
         type: 'input',
         validate(answer) {
-
             return validateEmail(answer, 'Manager');
-            /* //TODO: Ensure domain part is not just numerical
-            const REGEXP_VALID_EMAIL = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-
-
-            if (!answer || !answer.match(REGEXP_VALID_EMAIL)) {
-                return `Please provide a valid email for team's Manager. (name@domain.com)`;
-            }
-
-            return true; */
         }
     },
     {
@@ -119,10 +100,6 @@ const QUESTIONS_FOR_ENGINEER = [
         type: 'input',
         validate(answer) {  
             return validateName(answer, 'Engineer');
-           /*  if (!answer || answer.trim().length === 0) {
-                return `Please provide the name of the  Engineer.`;
-            }
-            return true; */
         }
     },
     {
@@ -131,11 +108,6 @@ const QUESTIONS_FOR_ENGINEER = [
         type: 'input',
         validate(answer) {
             return validateId(answer, 'Engineer');
-            /* if (!answer || isNaN(answer) || answer <0) {
-                // Expecting numerical id:  no whitespace or non numerical chars allowed.
-                return `Please provide a numerical id of the Engineer (expecting a numerical id with no spaces) ).`;
-            }
-            return true; */
         }
     },
     {
@@ -143,13 +115,7 @@ const QUESTIONS_FOR_ENGINEER = [
         message: `What is the engineer's email?`,
         type: 'input',
         validate(answer) {
-            
             return validateEmail(answer, 'Engineer');
-            /* if (!answer) {
-                // TODO: Add regexp for valid email format
-                return `Please provide a valid email for engineer.`;
-            }
-            return true; */
         }
     },
     {
@@ -173,10 +139,6 @@ const QUESTIONS_FOR_INTERN = [
         type: 'input',
         validate(answer) {  
             return validateName(answer, 'Intern');
-           /*  if (!answer || answer.trim().length === 0) {
-                return `Please provide the name of the Intern.`;
-            }
-            return true; */
         }
     },
     {
@@ -184,14 +146,7 @@ const QUESTIONS_FOR_INTERN = [
         message: `What is the  intern's id?`,
         type: 'input',
         validate(answer) {
-            
             return validateId(answer, 'Intern');
-
-            /* if (!answer || isNaN(answer) || answer <0) {
-                // Expecting numerical id:  no whitespace or non numerical chars allowed.
-                return `Please provide a numerical id of the Inter (expecting a numerical id with no spaces) ).`;
-            }
-            return true; */
         }
     },
     {
@@ -199,13 +154,7 @@ const QUESTIONS_FOR_INTERN = [
         message: `What is the intern's email?`,
         type: 'input',
         validate(answer) {
-            
             return validateEmail(answer, 'Intern');
-            /* if (!answer) {
-                // TODO: Add regexp for valid email format
-                return `Please provide a valid email for intern.`;
-            }
-            return true; */
         }
     },
     {
@@ -254,16 +203,16 @@ function validateId(answer, role) {
 }
 
 function validateEmail(answer, role) {
-     //TODO: Ensure domain part is not just numerical
-     const REGEXP_VALID_EMAIL = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-
+    //TODO: Ensure domain part is not just numerical
+    const REGEXP_VALID_EMAIL = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
     if (!answer || !answer.match(REGEXP_VALID_EMAIL)) {
         return `Please provide a valid email for the ${role}. (name@domain.com)`;
     }
-   
     return true;
 }
+
+
 
 /*-----------------------------------------------------------
  *   
@@ -280,12 +229,6 @@ function addTeamManager() {
     return inquirer.prompt(QUESTIONS_FOR_MANAGER_INFO)
         .then(answers => {
             console.log(answers);
-            console.log(`
-                answers.name = ${answers.name}
-                answers.id = ${answers.id}
-                answers.email = ${answers.email}
-                answers.office_number = ${answers.office_number}
-            `);
             let manager = new Manager(answers.name, answers.id, answers.email, answers.office_number);
             team.push(manager);
            
@@ -312,12 +255,6 @@ function addEngineer() {
     return inquirer.prompt(QUESTIONS_FOR_ENGINEER)
         .then(answers => {
             console.log(answers);
-            console.log(`
-                answers.name = ${answers.name}
-                answers.id = ${answers.id}
-                answers.email = ${answers.email}
-                answers.github_username = ${answers.github_username}
-            `);
         
             // create Engineer and add to team
              let engineer = new Engineer(answers.name, answers.id, answers.email, answers.github_username);
@@ -346,12 +283,6 @@ function addIntern() {
     return inquirer.prompt(QUESTIONS_FOR_INTERN)
         .then(answers => {
             console.log(answers);
-            console.log(`
-                answers.name = ${answers.name}
-                answers.id = ${answers.id}
-                answers.email = ${answers.email}
-                answers.school = ${answers.school}
-            `);
 
             // create Intern and add to temp
             let intern = new Intern(answers.name, answers.id, answers.email, answers.school);
@@ -409,7 +340,6 @@ function showMenuAddToTeam() {
 
             let outputHtml = render(team);
 
-
             checkOutputDirExists(OUTPUT_DIR);
             writeToFile(outputPath, outputHtml);
 
@@ -450,7 +380,7 @@ function checkOutputDirExists(filePath) {
  * @param {*} html - string representing html for Team profile
  */
 function writeToFile(filePathName, html) {
-/*     console.log(`
+   /*  console.log(`
         writeToFile entered with ${filePathName}
         ${html}
     `); */

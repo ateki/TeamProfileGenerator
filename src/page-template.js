@@ -1,7 +1,8 @@
 /**
  * File:  page-template.js
- * Desc:
- * 
+ * Desc:  Provides functionality to generate html for different team members role
+ * in producing team profile page html.
+ * Team member info should be passed in as array to functions.
  */
 
 

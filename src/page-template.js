@@ -1,8 +1,19 @@
+/**
+ * File:  page-template.js
+ * Desc:
+ * 
+ */
+
+
+const Manager = require("../lib/Manager");
+
+
 // creates the team
 const generateTeam = team => {
 
     // creates the manager html
     const generateManager = manager => {
+        
         return `
         <div class="card employee-card">
         <div class="card-header">
